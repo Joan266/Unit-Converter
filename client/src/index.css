@@ -1,13 +1,133 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* google font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&family=VT323&display=swap');
+
+/* layout */
+:root {
+  --strong-box-shadow-color:  0px 2px 4px 0px #00000040;
+  --medium-box-shadow-color: 0px 0px 8px 3px #00000033;
+  --light-box-shadow-color:  0px 0px 2px 2px #0000001A;
+  --purple-background-color: #2E0039;
+  --white-background-color: #FFFFFF;
+  --grey-background-color: #E3E3E3;
+  --purple-text-color: #2E0039;
+  --white-text-color: #FFFFFF;
+  --grey-text-color: #E3E3E3;
+  --strong-grey-text-color: #676767;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  height: 100%;
+}
+#react-root {
+  height: 100%;
+  width: 100%;
+}
+.App {
+  width: 100%; 
+  margin: 0 auto; 
+  background-color: var(--white-background-color); 
+}
+
+header {
+  position: fixed;
+  top: 0;
+  height: 48px;
+  width: 100%;
+  box-shadow: var(--strong-box-shadow-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  div {
+    align-items: center;
+    display: flex;
+    width: 717px;
+  }
+  h1 {
+    font-size: 20px;
+    font-weight: 900;
+    line-height: 30px;
+    color: var(--purple-text-color);
+    text-align: left;
+    margin-left: 8px;
+  }
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  height: 39px;
+  width: 100%;
+  background-color: var(--purple-background-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  div {
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    width: 250px;
+  }
+  p {
+    color:var(--white-text-color);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    text-align: left;
+  }
+}
+
+main {
+  max-width: 717px; 
+  width: 717px;
+  margin: 0 auto; 
+  .unitConverter {
+    background-color: var(--purple-background-color);
+    border-radius: 20px;
+    box-shadow: var(--medium-box-shadow-color);
+    overflow: hidden;
+    margin-top: 99px;
+    color: var(--white-text-color);
+    padding: 30px 80px 30px 40px;
+    .title {
+      h1 {
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 36px;
+        text-align: left;
+      }
+    }
+    .machine {
+      margin-top: 35px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding-right: 30px;
+    }
+    .results {
+      margin-top: 25px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      .num {
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 36px;
+        text-align: left;
+        margin-right: 13px;
+      }
+      .units {
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 24px;
+        text-align: left;
+      }
+    }
+  }
+}
+
+h1 {
+  margin:0;
 }
