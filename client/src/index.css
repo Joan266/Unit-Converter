@@ -98,7 +98,7 @@ main {
       }
     }
     .machine {
-      margin-top: 35px;
+      margin-top: 25px;
       display: flex;
       flex-direction: row;
       justify-content: space-between;

@@ -7,7 +7,7 @@ function App() {
       <header>
         <div>
           <img src="icons/purple_arrows.svg" alt="Arrows icon"/>
-          unit converter
+          <h1>unit converter</h1>
         </div>
       </header>
      <main>
