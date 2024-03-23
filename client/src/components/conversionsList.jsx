@@ -1,4 +1,4 @@
-function ConvertionsList() {
+function ConversionsList() {
   return (
     <div className="container">
 
@@ -6,4 +6,4 @@ function ConvertionsList() {
   );
 }
 
-export default ConvertionsList;
+export default ConversionsList;

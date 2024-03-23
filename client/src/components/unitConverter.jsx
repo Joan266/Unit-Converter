@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
+import { useStoreContext } from '../StoreContext';
 
 function UnitConverter() {
+  const { dispatch } = useStoreContext();
   const conversionOperations = [
     { id: 0, initialUnit: 'km', finalUnit: 'miles', conversionType: 'km_to_miles', conversionFactor: 0.621371192237334 },
     { id: 1, initialUnit: 'miles', finalUnit: 'km', conversionType: 'miles_to_km', conversionFactor: 1.609344 },
@@ -10,7 +12,7 @@ function UnitConverter() {
     { id: 5, initialUnit: 'inches', finalUnit: 'cm', conversionType: 'inches_to_cm', conversionFactor: 2.54 }
 ];
   const [ conversionOperation, setConversionOperation ] = useState(conversionOperations[0]);
-  const [ initialNumber, setInitialNumber ] = useState(0);
+  const [ initialNumber, setInitialNumber ] = useState("");
   const [ finalNumber, setFinalNumber ] = useState(0);
 
   const handleConversionOperationChange = (event) => {
@@ -23,7 +25,7 @@ function UnitConverter() {
     setInitialNumber(initialNumber);
   };
 
-  function handleReverseConvertion()  {
+  function handleReverseConversion()  {
     setInitialNumber(finalNumber);
     if (conversionOperation.id % 2 === 0)
       setConversionOperation(conversionOperations[conversionOperation.id + 1]);
@@ -31,6 +33,18 @@ function UnitConverter() {
       setConversionOperation(conversionOperations[conversionOperation.id - 1]);
   };
 
+  function handleSaveConversion()  {
+    if(initialNumber === 0) return
+    const formattedFinalNumber = (Math.floor(finalNumber * 100) / 100).toString()
+    const conversion = { 
+      initialNumber,
+      finalNumber: formattedFinalNumber, 
+      initialUnit: conversionOperation.initialUnit, 
+      finalUnit: conversionOperation.finalUnit
+    };
+    dispatch({ type: 'ADD_CONVERSION', payload: conversion });
+    setInitialNumber("");
+  };
   useEffect(() => {
     function unitConversion() {
       const finalNumber = initialNumber * conversionOperation.conversionFactor;
@@ -53,7 +67,7 @@ function UnitConverter() {
               </option>
             ))}
           </select>
-          <div className='reverse-convertion' onClick={handleReverseConvertion}>
+          <div className='reverse-conversion' onClick={handleReverseConversion}>
             <img src="icons/white_arrows.svg" alt="White arrows icon" />
           </div>
         </div>
@@ -65,7 +79,7 @@ function UnitConverter() {
         </div>
       </div>
       <div className="results">
-        <div className='heart-container'>
+        <div className='heart-container' onClick={handleSaveConversion}>
          <img src="icons/heart.svg" alt="Heart icon" />
         </div>
         <div style={{minWidth:"84px"}}>
