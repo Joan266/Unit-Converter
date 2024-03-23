@@ -117,11 +117,7 @@ main {
     overflow: hidden;
     margin-top: 99px;
     color: var(--white-text-color);
-    padding: 30px 80px 30px 40px;
-    .title {
-      h1 {
-      }
-    }
+    padding: 30px 70px 30px 40px;
     .machine {
       margin-top: 25px;
       display: flex;
@@ -129,8 +125,47 @@ main {
       justify-content: space-between;
       align-items: center;
       padding-right: 30px;
+      div {
+        display: flex;
+        align-items: center;
+      }
       select {
+        cursor: pointer;
         margin-right: 13px;
+        width: 218px;
+        height: 25px;
+        background-color: transparent;
+        color: var(--white-text-color);
+        outline: none;
+        border:none;
+        border-bottom: 2px solid var(--white-text-color);
+        option {   
+          color: #000;
+        }
+      }
+      .reverse-convertion {
+        position: relative;
+        height: 35px;
+        width: 35px;
+        cursor: pointer;
+        border-radius: 50%;
+        &:hover {
+          background-color: #e3e3e358;
+        }
+        img{
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          z-index: 2;
+        }
+      }
+      input {
+        width: 221px;background-color: transparent;
+        color: var(--white-text-color);
+        outline: none;
+        border:none;
+        border-bottom: 2px solid var(--white-text-color);
       }
       .initialunit {
         margin-left: 13px;
@@ -142,11 +177,26 @@ main {
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-      .num {
-       
-        margin-right: 13px;
+      .heart-container {
+        position: relative;
+        height: 35px;
+        width: 35px;
+        cursor: pointer;
+        border-radius: 50%;
+        &:hover {
+          background-color: #e3e3e358;
+        }
+        img{
+          margin-top: 1px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          z-index: 2;
+        }
       }
-      .finalunit {
+      .num {
+        margin-right: 13px;
       }
     }
   }
@@ -154,4 +204,16 @@ main {
 
 h1 {
   margin:0;
+}
+
+/* For webkit browsers like Chrome, Safari */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* For Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }
