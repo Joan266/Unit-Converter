@@ -7,7 +7,7 @@ function App() {
       <header>
         <div>
           <img src="icons/purple_arrows.svg" alt="Arrows icon"/>
-          <h1>unit converter</h1>
+          <h1 className="text-big">unit converter</h1>
         </div>
       </header>
      <main>
@@ -16,8 +16,8 @@ function App() {
      </main>
       <footer>
         <div>
-          <p>Terms of service</p>      
-          <p>Privacy policy</p>
+          <p className="text-smaller">Terms of service</p>      
+          <p className="text-smaller">Privacy policy</p>
         </div>
       </footer>
     </div>
