@@ -1,7 +1,21 @@
-import ConvertionsList from "./components/convertionsList";
+import React, { useEffect } from 'react';
+import ConversionsList from "./components/conversionsList";
 import UnitConverter from "./components/unitConverter";
+import { useStoreContext } from './StoreContext';
 
 function App() {
+  const { state } = useStoreContext();
+  useEffect(() => {
+    const handleClose = () => {
+      localStorage.setItem('conversions', JSON.stringify(state));
+    };
+
+    window.addEventListener('beforeunload', handleClose);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleClose);
+    };
+  }, [state]);
   return (
     <div className="App">
       <header>
@@ -12,7 +26,7 @@ function App() {
       </header>
      <main>
       <UnitConverter />
-      <ConvertionsList />
+      <ConversionsList />
      </main>
       <footer>
         <div>
