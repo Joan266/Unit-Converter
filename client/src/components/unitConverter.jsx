@@ -34,27 +34,34 @@ function UnitConverter() {
   return (
     <div className="unitConverter">
       <div className="title">
-        <h1>convert</h1>
+        <h1 className='text-bigger'>convert</h1>
       </div>
       <div className="machine">
-        <select onChange={handleConversionOperationChange}>
-          <option value={0}>km → miles</option>
-          <option value={1}>miles → km</option>
-          <option value={2}>m → feet</option>
-          <option value={3}>feet → m</option>
-          <option value={4}>cm → inches</option>
-          <option value={5}>inches → cm</option>
-        </select>
-        <img src="icons/white_arrows.svg" alt="White arrows icon" />
-        <input type="number" name="distance_to_convert" value={initialNumber} onChange={handleInitialNumberChange} />
+        <div>
+          <select onChange={handleConversionOperationChange}className='text-small'>
+            <option value={0}>km → miles</option>
+            <option value={1}>miles → km</option>
+            <option value={2}>m → feet</option>
+            <option value={3}>feet → m</option>
+            <option value={4}>cm → inches</option>
+            <option value={5}>inches → cm</option>
+          </select>
+          <img src="icons/white_arrows.svg" alt="White arrows icon" />
+        </div>
+        <div>
+          <input type="number" name="distance_to_convert" className='text-small' value={initialNumber} onChange={handleInitialNumberChange} />
+          <span className="initialunit text-small">
+            {conversionOperation.initialUnit}
+          </span>
+        </div>
       </div>
       <div className="results">
         <img src="icons/heart.svg" alt="Heart icon" />
         <div>
-          <span className="num">
+          <span className="num text-bigger">
             {finalNumber}
           </span>
-          <span className="units">
+          <span className="finalunit text-medium">
             {conversionOperation.finalUnit}
           </span>
         </div>
