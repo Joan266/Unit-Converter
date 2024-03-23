@@ -26,7 +26,9 @@ function UnitConverter() {
   };
 
   function handleReverseConversion()  {
-    setInitialNumber(finalNumber);
+    if(initialNumber !== "" && initialNumber !== 0) {
+      setInitialNumber(finalNumber);
+    }
     if (conversionOperation.id % 2 === 0)
       setConversionOperation(conversionOperations[conversionOperation.id + 1]);
     else
@@ -34,7 +36,7 @@ function UnitConverter() {
   };
 
   function handleSaveConversion()  {
-    if(initialNumber === 0) return
+    if(initialNumber === "" || Number === 0) return
     const formattedFinalNumber = (Math.floor(finalNumber * 100) / 100).toString()
     const conversion = { 
       initialNumber,

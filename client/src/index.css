@@ -196,8 +196,17 @@ main {
         }
       }
       .num {
-        margin-right: 13px;
+        margin-right: 8px;
       }
+    }
+  }
+  .conversionsList {
+    margin-top: 199px;
+    display: flex;
+    flex-direction: column;
+    color: var(--strong-grey-text-color);
+    .conversions-container {
+
     }
   }
 }
