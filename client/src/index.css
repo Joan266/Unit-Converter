@@ -76,10 +76,16 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+  
   div {
     align-items: center;
     display: flex;
-    width: 717px;
+    @media (min-width: 768px) {
+      width: 717px;
+    }
+    @media (max-width: 767px) {
+      width: 349px;
+    }
   }
   h1 {
     color: var(--purple-text-color);
@@ -106,28 +112,60 @@ footer {
   }
 }
 
+
+
+
 main {
-  max-width: 717px; 
-  width: 717px;
+  @media (min-width: 768px) {
+    max-width: 717px; 
+    width: 717px;
+  }
+  @media (max-width: 767px) {
+    max-width: 349px; 
+    width: 349px;
+  }
   margin: 0 auto; 
   .unitConverter {
     background-color: var(--purple-background-color);
     border-radius: 20px;
     box-shadow: var(--medium-box-shadow-color);
-    overflow: hidden;
-    margin-top: 99px;
+    overflow: hidden; 
+    @media (min-width: 768px) {
+      margin-top: 99px;
+      padding: 30px 70px 30px 40px;
+    };
+    @media (max-width: 767px) {
+      margin-top: 69px;
+      padding: 13px 26px 18px 22px;
+    };
     color: var(--white-text-color);
-    padding: 30px 70px 30px 40px;
     .machine {
       margin-top: 25px;
       display: flex;
-      flex-direction: row;
+      @media (min-width: 768px) {
+        flex-direction: row;
+      };
+      @media (max-width: 767px) {
+        flex-direction: column;
+        padding-right: 0;
+      };
       justify-content: space-between;
       align-items: center;
-      padding-right: 30px;
       div {
         display: flex;
         align-items: center;
+        @media (max-width: 767px) {
+          height: 35px;
+          justify-content: left;
+          width: 100%;
+        };
+      }
+      .initial-input-container {
+        @media (min-width: 768px) {
+          min-width: 284px;
+        };
+        @media (max-width: 767px) {
+        };
       }
       select {
         cursor: pointer;
@@ -162,14 +200,27 @@ main {
         }
       }
       input {
-        width: 221px;background-color: transparent;
+        @media (min-width: 768px) {
+          width: 221px;
+        };
+        @media (max-width: 767px) {
+          max-width: 218px;
+          width: 218px;
+          padding: 0;
+        };
+        background-color: transparent;
         color: var(--white-text-color);
         outline: none;
         border:none;
         border-bottom: 2px solid var(--white-text-color);
       }
       .initialunit {
-        margin-left: 13px;
+        @media (min-width: 768px) {
+          margin-left: 13px;
+        };
+        @media (max-width: 767px) {
+          margin-left: 22px;
+        };
       }
     }
     .results {
@@ -203,7 +254,12 @@ main {
     }
   }
   .conversionsList {
-    margin-top: 130px;
+    @media (min-width: 768px) {
+      margin-top: 130px;
+    }
+    @media (max-width: 767px) {
+      margin-top: 30px;
+    }
     display: flex;
     flex-direction: column;
     color: var(--strong-grey-text-color);
@@ -213,12 +269,20 @@ main {
     }
     .conversions-container {
       display: grid;
-      grid-template-columns: repeat(2, 1fr); 
-      gap: 21px;
-      margin-top: 22px;
+      @media (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 21px;
+        margin-top: 22px;
+        max-height: 400px;
+      }
+      @media (max-width: 767px) {
+        grid-template-columns: repeat(1, 1fr); 
+        gap: 18px;
+        margin-top: 13px;
+        max-height: 250px;
+      }
       padding: 5px;
       overflow-y: auto;
-      max-height: 400px;
       .conversion-container {
         display: flex;
         flex-direction: row;

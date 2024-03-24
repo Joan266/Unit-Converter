@@ -38,8 +38,9 @@ function UnitConverter() {
   function handleSaveConversion()  {
     if(initialNumber === "" || Number === 0) return
     const formattedFinalNumber = (Math.floor(finalNumber * 100) / 100).toString()
+    const formattedInitialNumber = (Math.floor(initialNumber * 100) / 100).toString()
     const conversion = { 
-      initialNumber,
+      initialNumber:formattedInitialNumber,
       finalNumber: formattedFinalNumber, 
       initialUnit: conversionOperation.initialUnit, 
       finalUnit: conversionOperation.finalUnit
@@ -61,7 +62,7 @@ function UnitConverter() {
         <h1 className='text-bigger'>convert</h1>
       </div>
       <div className="machine">
-        <div>
+        <div className='conversion-type-container'>
           <select onChange={handleConversionOperationChange} value={conversionOperation.id} className='text-small'>
             {conversionOperations.map(operation => (
               <option key={operation.id} value={operation.id}>
@@ -73,7 +74,7 @@ function UnitConverter() {
             <img src="icons/white_arrows.svg" alt="White arrows icon" />
           </div>
         </div>
-        <div style={{minWidth:"284px"}}>
+        <div className='initial-input-container'>
           <input type="number" name="distance_to_convert" className='text-small' value={initialNumber} onChange={handleInitialNumberChange} />
           <span className="initialunit text-small">
             {conversionOperation.initialUnit}
