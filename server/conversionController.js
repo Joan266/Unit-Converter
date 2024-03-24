@@ -22,7 +22,7 @@ module.exports = conversionController = {
     }
   },
   delete: async (req, res) => {
-    const conversionId = req.params.id; 
+    const conversionId = req.params._id; 
     console.log(conversionId);
     try {
       const deletedConversion = await Conversion.findByIdAndDelete(conversionId); 

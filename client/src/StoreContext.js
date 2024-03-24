@@ -23,12 +23,29 @@ export const StoreContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(storeReducer, initialState);
 
   useEffect(() => {
-    const storedConversions = localStorage.getItem('conversions');
-    if (storedConversions) {
-      const conversions = JSON.parse(storedConversions);
-      dispatch({ type: 'SET_CONVERSIONS', payload: conversions });
-    }
+    const fetchConversions = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/api/conversions");
+        if (!response.ok) {
+          throw new Error("Failed to fetch conversions");
+        }
+        const conversions = await response.json();
+        dispatch({ type: 'SET_CONVERSIONS', payload: conversions });
+      } catch (error) {
+        console.error("Error fetching conversions:", error);
+      }
+    };
+  
+    fetchConversions();
   }, []);
+  
+  // useEffect(() => {
+  //   const storedConversions = localStorage.getItem('conversions');
+  //   if (storedConversions) {
+  //     const conversions = JSON.parse(storedConversions);
+  //     dispatch({ type: 'SET_CONVERSIONS', payload: conversions });
+  //   }
+  // }, []);
   useEffect(() => {
     console.log(state)
   }, [state]);
