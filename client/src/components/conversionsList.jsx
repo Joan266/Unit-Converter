@@ -1,9 +1,20 @@
 import { useStoreContext } from "../StoreContext";
 function ConversionsList() {
   const { state, dispatch } = useStoreContext()
-  function handleClickXmark(index) {
+  async function handleClickXmark(index, _id) {
     dispatch({ type: 'DELETE_CONVERSION', payload: index });
+    try {
+      await fetch(`http://localhost:8000/api/delete/${_id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+    } catch (error) {
+      console.error("Error deleting conversion:", error);
+    }
   }
+  
   return (
     <div className="conversionsList">
       <label htmlFor="saved conversion" className="text-medium">saved</label>
@@ -13,7 +24,7 @@ function ConversionsList() {
             <span>
               {conversion.initialNumber} {conversion.initialUnit} → {conversion.finalNumber} {conversion.finalUnit}
             </span>
-            <div className="xmark-container" onClick={() => handleClickXmark(index)}>
+            <div className="xmark-container" onClick={() => handleClickXmark(index,conversion._id)}>
               <img src="icons/xMark.svg" alt="X mark" />
             </div>
           </div>

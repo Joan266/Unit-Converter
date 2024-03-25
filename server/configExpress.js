@@ -15,9 +15,6 @@ const configExpress = async () => {
   app.use(cors());
   app.use(express.json());
 
-  // Parse JSON bodies
-  app.use(bodyParser.json());
-
   // Error Handling Middleware
   app.use((req, res, next) => {
     console.log(req.path, req.method)
@@ -25,7 +22,7 @@ const configExpress = async () => {
   })  
 
   //routes
-  app.use('/api/conversion', conversionRoutes)
+  app.use('/api', conversionRoutes)
 
   const httpServer = createServer(app);
 

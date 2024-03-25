@@ -6,10 +6,10 @@ module.exports = conversionController = {
     const data = req.body;
     console.log(data);
     try {
-      const conversion = await Conversion.create(data); 
+      const conversion = await Conversion.create({ _id: new mongoose.Types.ObjectId(), ...data}); 
       if (conversion) {
         console.log(`Conversion addition operation succeeded`);
-        res.status(200).json({ error: null });
+        res.status(200).json({ _id: conversion._id });
       } else {
         console.log(`Conversion addition operation failed`);
         res.status(404).json({ error: "Conversion create operation failed" }); 
@@ -22,15 +22,18 @@ module.exports = conversionController = {
     }
   },
   delete: async (req, res) => {
-    const conversionId = req.params.id; 
-    console.log(conversionId);
+    const { id } = req.params;
     try {
-      const deletedConversion = await Conversion.findByIdAndDelete(conversionId); 
-      if (deletedConversion) {
-        res.status(200).json({ _id: deletedConversion._id }); 
-      } else {
-        res.status(404).json({ error: "Conversion not found" }); 
-      }
+      
+       const conversion = await Conversion.findById(id);
+       console.log(conversion)
+       if (!conversion) {
+           return res.status(404).json({ error: 'Conversion not found' });
+       }
+
+       await Conversion.findByIdAndDelete(id);
+
+       res.json({ message: 'Conversion deleted successfully' });
     } catch (error) {
       console.log(`Error: ${error}`);
       res.status(400).json({
@@ -41,6 +44,7 @@ module.exports = conversionController = {
   conversions: async (req, res) => {
     try {
       const conversions = await Conversion.find().sort({ createdAt: -1 }); 
+      console.log(conversions)
       if (conversions.length > 0) {
         res.status(200).json(conversions);
       } else {

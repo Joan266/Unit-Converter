@@ -35,19 +35,31 @@ function UnitConverter() {
       setConversionOperation(conversionOperations[conversionOperation.id - 1]);
   };
 
-  function handleSaveConversion()  {
-    if(initialNumber === "" || Number === 0) return
-    const formattedFinalNumber = (Math.floor(finalNumber * 100) / 100).toString()
-    const formattedInitialNumber = (Math.floor(initialNumber * 100) / 100).toString()
-    const conversion = { 
-      initialNumber:formattedInitialNumber,
-      finalNumber: formattedFinalNumber, 
-      initialUnit: conversionOperation.initialUnit, 
+  async function handleSaveConversion() {
+    if (initialNumber === "" || initialNumber === 0) return; 
+    const formattedFinalNumber = (Math.floor(finalNumber * 100) / 100).toString();
+    const formattedInitialNumber = (Math.floor(initialNumber * 100) / 100).toString();
+    const conversion = {
+      initialNumber: formattedInitialNumber,
+      finalNumber: formattedFinalNumber,
+      initialUnit: conversionOperation.initialUnit,
       finalUnit: conversionOperation.finalUnit
     };
     dispatch({ type: 'ADD_CONVERSION', payload: conversion });
-    setInitialNumber("");
+    try {
+      await fetch("http://localhost:8000/api/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(conversion)
+      });
+      setInitialNumber("");
+    } catch (error) {
+      console.error("Error saving conversion:", error);
+    }
   };
+  
   useEffect(() => {
     function unitConversion() {
       const finalNumber = initialNumber * conversionOperation.conversionFactor;
