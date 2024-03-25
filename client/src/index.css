@@ -132,7 +132,7 @@ main {
     overflow: hidden; 
     @media (min-width: 768px) {
       margin-top: 99px;
-      padding: 30px 70px 30px 40px;
+      padding: 25px 70px 25px 40px;
     };
     @media (max-width: 767px) {
       margin-top: 69px;

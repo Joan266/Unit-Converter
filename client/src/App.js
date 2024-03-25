@@ -1,21 +1,21 @@
-import React, { useEffect } from 'react';
+// import React, { useEffect } from 'react';
 import ConversionsList from "./components/conversionsList";
 import UnitConverter from "./components/unitConverter";
-import { useStoreContext } from './StoreContext';
+// import { useStoreContext } from './StoreContext';
 
 function App() {
-  const { state } = useStoreContext();
-  useEffect(() => {
-    const handleClose = () => {
-      localStorage.setItem('conversions', JSON.stringify(state));
-    };
+  // const { state } = useStoreContext();
+  // useEffect(() => {
+  //   const handleClose = () => {
+  //     localStorage.setItem('conversions', JSON.stringify(state));
+  //   };
 
-    window.addEventListener('beforeunload', handleClose);
+  //   window.addEventListener('beforeunload', handleClose);
 
-    return () => {
-      window.removeEventListener('beforeunload', handleClose);
-    };
-  }, [state]);
+  //   return () => {
+  //     window.removeEventListener('beforeunload', handleClose);
+  //   };
+  // }, [state]);
   return (
     <div className="App">
       <header>

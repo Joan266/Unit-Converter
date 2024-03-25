@@ -45,19 +45,29 @@ function UnitConverter() {
       initialUnit: conversionOperation.initialUnit,
       finalUnit: conversionOperation.finalUnit
     };
-    dispatch({ type: 'ADD_CONVERSION', payload: conversion });
     try {
-      await fetch("http://localhost:8000/api/add", {
+      const response = await fetch("http://localhost:8000/api/add", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify(conversion)
       });
+    
+      const responseData = await response.json();
+      console.log(responseData)
+      if (response.ok) {
+        const { _id } = responseData;
+        dispatch({ type: 'ADD_CONVERSION', payload: { _id, ...conversion } });
+      } else {
+        console.error('Failed to add conversion:', responseData.error || 'Unknown error');
+      }
+    
       setInitialNumber("");
     } catch (error) {
       console.error("Error saving conversion:", error);
     }
+    
   };
   
   useEffect(() => {
