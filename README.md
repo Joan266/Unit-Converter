@@ -4,7 +4,7 @@
 ## Description
 
 Unit Converter is a webpage by Joan266.
-It enables users to covert units from the International System (km, m, cm) to the Impertial system (miles, feet, inches) and the other way around. 
+Enables users to convert units from the International System (kilometers, meters, centimeters) to the Imperial system (miles, feet, inches), and the other way around. 
 
 ## Installation
 
