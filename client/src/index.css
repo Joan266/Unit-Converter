@@ -255,7 +255,7 @@ main {
   }
   .conversionsList {
     @media (min-width: 768px) {
-      margin-top: 130px;
+      margin-top: 90px;
     }
     @media (max-width: 767px) {
       margin-top: 30px;

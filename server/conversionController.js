@@ -4,11 +4,11 @@ const Conversion = require('./conversionModel.js');
 module.exports = conversionController = {
   add: async (req, res) => {
     const data = req.body;
-    console.log(data);
     try {
       const conversion = await Conversion.create({ _id: new mongoose.Types.ObjectId(), ...data}); 
       if (conversion) {
         console.log(`Conversion addition operation succeeded`);
+        console.log(conversion);
         res.status(200).json({ _id: conversion._id });
       } else {
         console.log(`Conversion addition operation failed`);
