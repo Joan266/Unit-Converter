@@ -6,7 +6,7 @@ const router = express.Router()
 router.post('/add', conversionController.add);
 
 // delete conversion
-router.delete('/delete', conversionController.delete);
+router.delete('/delete/:id', conversionController.delete);
 
 // get conversions
 router.get('/conversions', conversionController.conversions);
