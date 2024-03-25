@@ -7,7 +7,7 @@ const initialState = [];
 const storeReducer = (state, action) => {
   switch (action.type) {
     case 'ADD_CONVERSION':
-      return [...state, action.payload];
+      return [ action.payload, ...state ];
     case 'DELETE_CONVERSION':
       return state.filter((_, index) => index !== action.payload);
     case 'CLEAR_CONVERSIONS':
