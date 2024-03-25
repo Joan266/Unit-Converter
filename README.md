@@ -42,3 +42,4 @@ Enables users to convert units from the International System (kilometers, meters
 
 - **Unit conversion**: Enables users to convert units from the International System (kilometers, meters, centimeters) to the Imperial system (miles, feet, inches), and vice versa.
 - **Conversions CRUD**: Users can create, read, and delete conversions. They have the ability to add new conversions, view existing ones, and remove conversions as needed.
+- **Responsive Design**: The application is responsive, providing optimal viewing and interaction experience across a wide range of devices, including laptops and mobile phones.
