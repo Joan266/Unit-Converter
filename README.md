@@ -1,11 +1,6 @@
 
 # Unit Converter
 
-## Description
-
-Unit Converter is a webpage by Joan266.
-Enables users to convert units from the International System (kilometers, meters, centimeters) to the Imperial system (miles, feet, inches), and the other way around. 
-
 ## Main Features
 
 - **Unit conversion**: Enables users to convert units from the International System (kilometers, meters, centimeters) to the Imperial system (miles, feet, inches), and vice versa.
